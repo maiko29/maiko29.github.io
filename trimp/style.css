@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+main {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin:auto;
+
+}
+
+
+.slider {
+    width: 75%;
+    margin:15px;
+}
+#kalender{
+    background-color: rgb(222, 241, 202);
+}
+
+.üldkonteiner{
+
+    text-align: center;
+    margin:auto;
+    width: 650px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px dotted lightgray;
+    /* padding: 10px; */
+}
+
+.flexkonteiner{
+    background-color: whitesmoke;
+    text-align: center;
+    margin:20px;
+    /* width: 650px; */
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px dotted lightgray;
+    padding: 10px;
+}
+
+#spanvastus{
+    justify-content: center;
+    display: inline;
+    width: 360px;
+    font-size: 60px;
+    font-family: 'Courier Prime', monospace;
+	//font-family: 'Oswald', sans-serif;
+}
+
+#billboard{
+    font-size: 60px;
+    font-family: 'Courier Prime', monospace;
+	//font-family: 'Roboto Mono', monospace;
+	//font-family: 'Major Mono Display', monospace;
+	//font-family: 'Oswald', sans-serif;
+}
+
+#minibillboard{
+    font-size: 13px;
+    font-family: 'Courier Prime', monospace;
+	//font-family: 'Oswald', sans-serif;
+}
+
+.label{
+    font-size: 13px;
+    font-family: 'Courier Prime', monospace;
+}
+
+#vastus{
+    display: none;
+}

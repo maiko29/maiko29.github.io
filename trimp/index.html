@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<html lang="et">
+    <meta charset="utf-8">
+    <meta name="description" content="JS kalkulaator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>TRIMP score estimator by Maiko Mõtsar</title>
+
+    <link rel="stylesheet" href="reset.css"/>
+    <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body id="keha">
+
+<header></header>
+
+<main>
+    <div class="üldkonteiner">
+    <div class="flexkonteiner">
+        <h3>TRIMP Score estimator</h3>
+        <div class="slidecontainer">
+            
+            
+            <!-- <button onclick="vähenda(lohisti)">-</button> -->
+            <div id="spanvastus">
+                <span>0</span>
+            </div>
+
+            <!-- <button onclick="suurenda(lohisti)">+</button> -->
+            <br>
+            <span>Kestvus</span>
+            <input type="range" min="0" max="180" value="60" class="slider" id="kestvus" step="1" list=""
+                   oninput="onChange(kestvus,kestvuseVäärtus)"><span id="kestvuseVäärtus">60</span><span id="">, minutites</span><br>
+                   
+                   
+            <datalist id="kriipsud">
+                <option value="0" label="0"></option>
+                <option value="10" label="10"></option>
+                <option value="20" label="20"></option>
+                <option value="30" label="30"></option>
+                <option value="40" label="40"></option>
+                <option value="50" label="50"></option>
+                <option value="60" label="60"></option>
+                <option value="70" label="70"></option>
+                <option value="80" label="80"></option>
+                <option value="90" label="90"></option>
+                <option value="100" label="100"></option>
+                <option value="10" label="110"></option>
+                <option value="20" label="120"></option>
+                <option value="30" label="130"></option>
+                <option value="40" label="140"></option>
+                <option value="50" label="150"></option>
+                <option value="60" label="160"></option>
+                <option value="70" label="170"></option>
+                <option value="80" label="180"></option>
+                <option value="90" label="190"></option>
+                <option value="100" label="200"></option>
+            </datalist>
+            <!--<span id="spanvastus"></span>-->
+            <!--        <input type="text" id="sliderValue">-->
+        <!-- <input type="text" id="vastus"> -->
+
+ <br>
+        <span id="billboard"></span><br>
+        <span id="minibillboard"></span><span> </span><span class="label" id="hrrID">HRR:</span>
+        <!--<span onclick="var cb = navigator.clipboard.writeText('test'); alert('tst');"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+</svg></span>-->
+        </div>
+    </div>
+
+
+    <div class="flexkonteiner"><h3>PARAMEETRID</h3>
+    <table width="100%">
+        <span class="label">Sugu: </span>
+            <input type="radio" id="m" name="sugu" onchange="arvuta()" checked>
+            <label for="m" class="label">mees (0.64e<sup class="label">1.92×HRR</sup>)</label>
+
+            <input type="radio" id="n" name="sugu" onchange="arvuta()">
+            <label for="n" class="label">naine (0.64e<sup class="label">1.67×HRR</sup>)</label>
+            <br>
+            <span class="label">HR ave: </span>
+            <input type="range" min="40" max="180" value="110" class="slider" id="HRave" step="1" list=""
+            oninput="onChange(HRave,HRavevalue)">
+            <span id="HRavevalue" class="label">110</span>
+            <br>
+            <span class="label">HR rest: </span>
+            <input type="range" min="40" max="100" value="55" class="slider" id="HRrest" step="1" list=""
+            oninput="onChange(HRrest,HRrestvalue)">
+            <span id="HRrestvalue" class="label">55</span>
+            <br>
+            <span class="label">HR max: </span>
+            <input type="range" min="150" max="220" value="181" class="slider" id="HRmax" step="1" list=""
+            oninput="onChange(HRmax,HRmaxvalue)">
+            <span id="HRmaxvalue" class="label">181</span>
+        <tr>
+            <td id="180p"><b></b></td>
+            <td id="270p"></td>
+            <td id="365p"></td>
+            <td id="455p"></td>
+        </tr>
+       
+    </table>
+</div>
+<div class="flexkonteiner">
+    <p>Käesolev veebirakenduse autor on Maiko Mõtsar, kes annab selle kasutusse '<i>nii nagu on</i>' põhimõttel.</p>
+</div>
+</div>
+<!--
+    <div class="üldkonteiner">
+        <div class="slidecontainer">
+            <button>-</button>
+            <div id="spanvastus">
+                <output>0</output>
+            </div>
+
+            <button>+</button>
+            <br>
+            <input type="range" min="-180" max="180" value="0" class="slider" id="lohisti455" step="1" list="kriipsud455"
+                   oninput="slideriV22rtus(this)">
+            <datalist id="kriipsud455">
+                <option value="0" label="0"></option>
+                <option value="10" label="10"></option>
+
+                <option value="80" label="80"></option>
+                <option value="90" label="90"></option>
+                <option value="100" label="100"></option>
+                <option value="10" label="110"></option>
+                <option value="20" label="120"></option>
+                <option value="30" label="130"></option>
+                <option value="40" label="140"></option>
+                <option value="50" label="150"></option>
+                <option value="60" label="160"></option>
+                <option value="70" label="170"></option>
+                <option value="80" label="180"></option>
+                <option value="90" label="190"></option>
+                <option value="100" label="200"></option>
+            </datalist>
+            <span id="spanvastus"></span>
+            &lt;!&ndash;        <input type="text" id="sliderValue">&ndash;&gt;
+        </div>
+
+        <input type="text" id="vastus">
+
+        &lt;!&ndash;       &ndash;&gt; <br>
+        <span id="billboard"></span><br><span id="minibillboard"></span><span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+</svg></span>
+
+
+    </div>-->
+
+
+</main>
+
+<footer></footer>
+ <!-- src="script.js" -->
+<script type='text/javascript'>
+
+
+
+function arvuta(){
+    let HRaverage = parseInt(document.getElementById("HRave").value);
+    
+    let HRresting = parseInt(document.getElementById("HRrest").value);
+    
+    let HRmaximal = parseInt(document.getElementById("HRmax").value);
+    
+    //let sugu = document.getElementById("m").checked;
+   
+    let HRR = 0;
+    HRR = (HRaverage-HRresting)/(HRmaximal-HRresting);
+
+    let factor = 0;
+
+    if (document.getElementById("m").checked) {
+        factor = 0.64*Math.exp(1.92*HRR);
+        console.log("Valitud on mees");
+    } else {
+        factor = 0.64*Math.exp(1.67*HRR);
+        console.log("Valitud on naine");
+    }
+
+    let kestvusväärtus = parseInt(document.getElementById("kestvus").value);
+    
+    //let factor = 0.64*Math.exp(1.92*HRR)
+    
+    let TRIMP = kestvusväärtus*HRR*factor;
+    
+    document.getElementById("spanvastus").innerText= Math.round(TRIMP);    
+
+    document.getElementById("hrrID").innerText= "HRR: "+HRR.toFixed(3);
+
+    let perMin = Math.round(TRIMP)/kestvusväärtus;
+    
+    document.getElementById("minibillboard").innerText=perMin.toFixed(2);
+}
+
+function onChange(muutjaID,muudetavID){
+    //console.log(muutjaID.id);
+    //let HRrest =muutjaID.value;
+    document.getElementById(muudetavID.id).innerText = muutjaID.value;
+    
+    //document.getElementById.muudetavID.textContent(muutjaID.value);
+    arvuta();
+}
+document.getElementById("keha").addEventListener("load", arvuta);
+</script>
+</body>
+
+</html>
